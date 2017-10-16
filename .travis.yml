@@ -22,5 +22,16 @@ matrix:
     - os: osx
       env: BUILD=Doc
 
+# Install gcc-6 for extended constexpr support.
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-6
+
+before_install:
+  - export CXX=g++-6
+
 script:
   - support/travis-build.py
